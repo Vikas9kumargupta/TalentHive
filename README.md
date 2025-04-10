@@ -1,3 +1,3 @@
 # TalentHive
 
-## Microservice Architecture
+## Monolithic Architecture
