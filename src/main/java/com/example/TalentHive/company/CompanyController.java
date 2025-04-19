@@ -1,5 +1,6 @@
 package com.example.TalentHive.company;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,12 +18,14 @@ public class CompanyController {
     }
 
     @GetMapping
+    @Operation(summary = "Get All Companies", description = "Returns list of companies")
     public ResponseEntity<List<Company>> getAllCompanies(){
         return new ResponseEntity<>(companyService.getAllCompanies(),
                 HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Update Company by Id", description = "Update company by Id")
     public ResponseEntity<String> updateCompany(@PathVariable Long id,
                                                 @RequestBody Company company){
         companyService.updateCompany(company, id);
@@ -31,6 +34,7 @@ public class CompanyController {
     }
 
     @PostMapping
+    @Operation(summary = "Add Company", description = "Add new Company to List")
     public ResponseEntity<String> addCompany(@RequestBody Company company){
         companyService.createCompany(company);
         return new ResponseEntity<>("Company added successfully",
